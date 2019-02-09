@@ -88,4 +88,57 @@ mod tests {
             }
         });
     }
+
+
+    #[test]
+    fn testBox() {
+        let mut x = 5;//可变的变量绑定.当一个绑定是可变的，它意味着你可以改变它指向的内容
+        x = 6;
+        println!("{}", x);
+
+        let p = Box::new(Foo { data: 99999 });
+
+        let m = p.clone();
+        println!("the value of p is {}", p.data);
+    }
+
+    #[derive(Copy, Clone, Debug)]
+    struct Foo {
+        data: u32
+    }
+
+
+    #[test]
+    fn testClone01() {
+        let v1 = Foo { data: 32 };
+        let v2 = v1;
+        println!("{}", v1.data)
+    }
+
+
+    #[test]
+    fn testClone() {
+        let immutable_value = Foo { data: 34 };
+
+        let mut mutable_value = immutable_value;
+
+        mutable_value.data = 99;
+
+
+
+        mutable_value = Foo{data:99};
+
+        mutable_value_change(&mut mutable_value);
+
+        let p = &mut mutable_value;
+    }
+
+
+    fn mutable_value_change(foo: &mut Foo) {
+        foo.data = 100;
+        println!("{}", foo.data);
+    }
 }
+
+
+
