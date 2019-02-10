@@ -125,12 +125,29 @@ mod tests {
         mutable_value.data = 99;
 
 
-
-        mutable_value = Foo{data:99};
+        mutable_value = Foo { data: 99 };
 
         mutable_value_change(&mut mutable_value);
 
         let p = &mut mutable_value;
+    }
+
+    #[test]
+    fn arraySum() {
+        let mut array = vec![1, 5, 6, 2, 7, 11, 15];
+
+        let target = 26;
+
+        for (index, num) in array.iter().enumerate() {
+            let mut innerIndex = index + 1;
+            while innerIndex < array.len() {
+                if num + array[innerIndex] == target {
+                    println!("the index of array index is {}, {}", index, innerIndex);
+                    break;
+                }
+                innerIndex += 1;
+            }
+        }
     }
 
 
