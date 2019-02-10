@@ -142,7 +142,7 @@ mod tests {
             let mut innerIndex = index + 1;
             while innerIndex < array.len() {
                 if num + array[innerIndex] == target {
-                    println!("the index of array index is {}, {}", index, innerIndex);
+                    println!("the index of array index is[{},{}]", index, innerIndex);
                     break;
                 }
                 innerIndex += 1;
